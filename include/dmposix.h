@@ -25,8 +25,8 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef FMT_POSIX_H_
-#define FMT_POSIX_H_
+#ifndef __DMFMT_POSIX_H__
+#define __DMFMT_POSIX_H__
 
 #ifdef __MINGW32__
 // Workaround MinGW bug https://sourceforge.net/p/mingw/bugs/2024/.
@@ -400,4 +400,4 @@ inline fmt::File &move(fmt::File &f) { return f; }
 }
 #endif
 
-#endif  // FMT_POSIX_H_
+#endif  // __DMFMT_POSIX_H__

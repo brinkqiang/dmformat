@@ -25,8 +25,8 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef FMT_TIME_H_
-#define FMT_TIME_H_
+#ifndef __DMFMT_TIME_H__
+#define __DMFMT_TIME_H__
 
 #include "dmformat.h"
 #include <ctime>
@@ -61,4 +61,4 @@ void format(BasicFormatter<char, ArgFormatter> &f,
 }
 }
 
-#endif  // FMT_TIME_H_
+#endif  // __DMFMT_TIME_H__

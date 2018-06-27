@@ -25,8 +25,8 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef FMT_OSTREAM_H_
-#define FMT_OSTREAM_H_
+#ifndef __DMFMT_OSTREAM_H__
+#define __DMFMT_OSTREAM_H__
 
 #include "dmformat.h"
 #include <ostream>
@@ -130,4 +130,4 @@ FMT_VARIADIC(int, fprintf, std::ostream &, CStringRef)
 # include "dmostream.cc"
 #endif
 
-#endif  // FMT_OSTREAM_H_
+#endif  // __DMFMT_OSTREAM_H__

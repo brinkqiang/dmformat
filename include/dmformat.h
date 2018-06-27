@@ -25,8 +25,8 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef FMT_FORMAT_H_
-#define FMT_FORMAT_H_
+#ifndef __DMFMT_FORMAT_H__
+#define __DMFMT_FORMAT_H__
 
 #include <cassert>
 #include <clocale>
@@ -3823,4 +3823,4 @@ operator"" _a(const wchar_t *s, std::size_t) { return {s}; }
 # define FMT_FUNC
 #endif
 
-#endif  // FMT_FORMAT_H_
+#endif  // __DMFMT_FORMAT_H__
