@@ -40,6 +40,8 @@
 #include <vector>
 #include <utility>
 
+#include "dmtypes.h"
+
 #ifdef _SECURE_SCL
 # define FMT_SECURE_SCL _SECURE_SCL
 #else
@@ -48,14 +50,6 @@
 
 #if FMT_SECURE_SCL
 # include <iterator>
-#endif
-
-#if defined(_MSC_VER) && _MSC_VER <= 1500
-typedef unsigned __int32 uint32_t;
-typedef unsigned __int64 uint64_t;
-typedef __int64          intmax_t;
-#else
-#include <stdint.h>
 #endif
 
 #if !defined(FMT_HEADER_ONLY) && defined(_WIN32)
