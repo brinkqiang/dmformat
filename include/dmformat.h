@@ -28,6 +28,8 @@
 #ifndef __DMFMT_FORMAT_H__
 #define __DMFMT_FORMAT_H__
 
+#define  FMT_HEADER_ONLY
+
 #include <cassert>
 #include <clocale>
 #include <cmath>
