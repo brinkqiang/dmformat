@@ -19,4 +19,4 @@ function(add_dmformat_test name)
   add_test(NAME ${name} COMMAND ${name})
 endfunction()
 
-add_dmformat_test("format-test")
+add_dmformat_test("dmformattest")
