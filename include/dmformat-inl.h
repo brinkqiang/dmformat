@@ -5,8 +5,8 @@
 //
 // For the license information refer to format.h.
 
-#ifndef __DMFORMAT-INL_H_INCLUDE__
-#define __DMFORMAT-INL_H_INCLUDE__
+#ifndef __DMFORMAT_INL_H_INCLUDE__
+#define __DMFORMAT_INL_H_INCLUDE__
 
 #include "dmformat.h"
 
@@ -561,4 +561,4 @@ FMT_END_NAMESPACE
 # pragma warning(pop)
 #endif
 
-#endif // __DMFORMAT-INL_H_INCLUDE__
+#endif // __DMFORMAT_INL_H_INCLUDE__
