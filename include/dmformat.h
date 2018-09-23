@@ -3417,6 +3417,66 @@ auto join(const Range &range, wstring_view sep)
 }
 #endif
 
+template <typename T = int>
+T to_number(const std::string& strIn)
+{
+    return std::atoi(strIn.c_str());
+}
+
+template <>
+int to_number(const std::string& strIn)
+{
+    return std::atoi(strIn.c_str());
+}
+
+template <>
+unsigned int to_number(const std::string& strIn)
+{
+    return std::strtoul(strIn.c_str(), NULL, 10);
+}
+
+template <>
+long to_number(const std::string& strIn)
+{
+    return std::strtol(strIn.c_str(), NULL, 10);
+}
+
+template <>
+unsigned long to_number(const std::string& strIn)
+{
+    return std::strtoul(strIn.c_str(), NULL, 10);
+}
+
+template <>
+long long to_number(const std::string& strIn)
+{
+    return std::strtoll(strIn.c_str(), NULL, 10);
+}
+
+template <>
+unsigned long long to_number(const std::string& strIn)
+{
+    return std::strtoull(strIn.c_str(), NULL, 10);
+}
+
+template <>
+float to_number(const std::string& strIn)
+{
+    return std::strtof(strIn.c_str(), NULL);
+}
+
+template <>
+double to_number(const std::string& strIn)
+{
+    return std::strtod(strIn.c_str(), NULL);
+}
+
+template <>
+long double to_number(const std::string& strIn)
+{
+    return std::strtold(strIn.c_str(), NULL);
+}
+
 /**
   \rst
   Converts *value* to ``std::string`` using the default format for type *T*.
