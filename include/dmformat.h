@@ -3418,63 +3418,63 @@ auto join(const Range &range, wstring_view sep)
 #endif
 
 template <typename T = int>
-T to_number(const std::string& strIn)
+inline T to_number(const std::string& strIn)
 {
-    return std::atoi(strIn.c_str());
+    return std::stoi(strIn);
 }
 
 template <>
-int to_number(const std::string& strIn)
+inline int to_number(const std::string& strIn)
 {
-    return std::atoi(strIn.c_str());
+    return std::stoi(strIn);
 }
 
 template <>
-unsigned int to_number(const std::string& strIn)
+inline unsigned int to_number(const std::string& strIn)
 {
-    return std::strtoul(strIn.c_str(), NULL, 10);
+    return std::stoul(strIn);
 }
 
 template <>
-long to_number(const std::string& strIn)
+inline long to_number(const std::string& strIn)
 {
-    return std::strtol(strIn.c_str(), NULL, 10);
+    return std::stol(strIn);
 }
 
 template <>
-unsigned long to_number(const std::string& strIn)
+inline unsigned long to_number(const std::string& strIn)
 {
-    return std::strtoul(strIn.c_str(), NULL, 10);
+    return std::stoul(strIn);
 }
 
 template <>
-long long to_number(const std::string& strIn)
+inline long long to_number(const std::string& strIn)
 {
-    return std::strtoll(strIn.c_str(), NULL, 10);
+    return std::stoll(strIn);
 }
 
 template <>
-unsigned long long to_number(const std::string& strIn)
+inline unsigned long long to_number(const std::string& strIn)
 {
-    return std::strtoull(strIn.c_str(), NULL, 10);
+    return std::stoull(strIn);
 }
 
 template <>
-float to_number(const std::string& strIn)
+inline float to_number(const std::string& strIn)
 {
-    return std::strtof(strIn.c_str(), NULL);
+    return std::stof(strIn);
 }
 
 template <>
-double to_number(const std::string& strIn)
+inline double to_number(const std::string& strIn)
 {
-    return std::strtod(strIn.c_str(), NULL);
+    return std::stod(strIn);
 }
 
 template <>
-long double to_number(const std::string& strIn)
+inline long double to_number(const std::string& strIn)
 {
-    return std::strtold(strIn.c_str(), NULL);
+    return std::stold(strIn);
 }
 
 /**
