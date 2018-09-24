@@ -25,8 +25,8 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __DMFMT_FORMAT_H__
-#define __DMFMT_FORMAT_H__
+#ifndef __DMFORMAT_H_INCLUDE__
+#define __DMFORMAT_H_INCLUDE__
 
 #define FMT_HEADER_ONLY
 #include <algorithm>
@@ -3995,4 +3995,4 @@ FMT_END_NAMESPACE
 # pragma GCC diagnostic pop
 #endif
 
-#endif  // __DMFMT_FORMAT_H__
+#endif // __DMFORMAT_H_INCLUDE__
