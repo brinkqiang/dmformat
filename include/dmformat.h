@@ -52,7 +52,7 @@
 # define FMT_ICC_VERSION 0
 #endif
 
-#include "dmcore.h"
+#include "dmformatcore.h"
 
 #if FMT_GCC_VERSION >= 406 || FMT_CLANG_VERSION
 # pragma GCC diagnostic push
@@ -3994,5 +3994,7 @@ FMT_END_NAMESPACE
 #if FMT_GCC_VERSION >= 406 || FMT_CLANG_VERSION
 # pragma GCC diagnostic pop
 #endif
+
+#include "dmprintf.h"
 
 #endif // __DMFORMAT_H_INCLUDE__

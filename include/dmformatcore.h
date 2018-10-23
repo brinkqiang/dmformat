@@ -4,8 +4,9 @@
 // All rights reserved.
 //
 // For the license information refer to format.h.
-#ifndef __DMCORE_H_INCLUDE__
-#define __DMCORE_H_INCLUDE__
+
+#ifndef __DMFORMATCORE_H_INCLUDE__
+#define __DMFORMATCORE_H_INCLUDE__
 
 #include <cassert>
 #include <cstdio>
@@ -1327,4 +1328,4 @@ inline void print(wstring_view format_str, const Args & ... args) {
 }
 FMT_END_NAMESPACE
 
-#endif // __DMCORE_H_INCLUDE__
+#endif // __DMFORMATCORE_H_INCLUDE__

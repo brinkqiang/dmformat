@@ -31,5 +31,7 @@ int main()
     std::string strName = "{}";
     strName = fmt::format(strName, name);
 
+    fmt::fprintf(stdout, "hello world\n");
+
     return 0;
 }
