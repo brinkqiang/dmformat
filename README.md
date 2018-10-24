@@ -19,7 +19,7 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 [win-link]:  https://ci.appveyor.com/project/brinkqiang/dmformat "AppVeyor build status"
 
 ## Intro
-C++ string format lib, based on fmt, minimum support vs2008.
+C++11 string format lib, based on fmt.
 ```cpp
 
 #include "dmformat.h"
