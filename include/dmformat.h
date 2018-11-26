@@ -1513,7 +1513,10 @@ class arg_formatter_base {
   };
 
   void write_char(char_type value) {
-    writer_.write_padded(1, specs_, char_writer{value});
+    char_writer tmp;
+	tmp.value = value;
+
+	writer_.write_padded(1, specs_, tmp);
   }
 
   void write_pointer(const void *p) {
@@ -2418,6 +2421,12 @@ class basic_writer {
     std::size_t padding;
     F f;
 
+	padded_int_writer(string_view _prefix, char_type _fill, std::size_t _padding, F _f)
+		: prefix(_prefix), fill(_fill), padding(_padding), f(_f)
+	{
+	}
+
+
     template <typename It>
     void operator()(It &&it) const {
       if (prefix.size() != 0)
@@ -2449,7 +2458,9 @@ class basic_writer {
     align_spec as = spec;
     if (spec.align() == ALIGN_DEFAULT)
       as.align_ = ALIGN_RIGHT;
-    write_padded(size, as, padded_int_writer<F>{prefix, fill, padding, f});
+
+	padded_int_writer<F> tmp(prefix, fill, padding, f);
+	write_padded(size, as, tmp);
   }
 
   // Writes a decimal integer.
@@ -2516,13 +2527,23 @@ class basic_writer {
 
     void on_dec() {
       unsigned num_digits = internal::count_digits(abs_value);
-      writer.write_int(num_digits, get_prefix(), spec,
-                       dec_writer{abs_value, num_digits});
+
+	  dec_writer tmp;
+	  tmp.abs_value = abs_value;
+	  tmp.num_digits = num_digits;
+
+      writer.write_int(num_digits, get_prefix(), spec, tmp);
     }
 
     struct hex_writer {
       int_writer &self;
       unsigned num_digits;
+
+	  hex_writer(int_writer &_self, unsigned _num_digits)
+		  : self(_self), num_digits(_num_digits)
+	  {
+
+	  }
 
       template <typename It>
       void operator()(It &&it) const {
@@ -2558,8 +2579,12 @@ class basic_writer {
         prefix[prefix_size++] = static_cast<char>(spec.type());
       }
       unsigned num_digits = count_digits<1>();
-      writer.write_int(num_digits, get_prefix(), spec,
-                       bin_writer<1>{abs_value, num_digits});
+
+	  bin_writer<1> tmp;
+      tmp.abs_value = abs_value;
+      tmp.num_digits = num_digits;
+
+      writer.write_int(num_digits, get_prefix(), spec, tmp);
     }
 
     void on_oct() {
@@ -2570,8 +2595,13 @@ class basic_writer {
         // is not greater than the number of digits.
         prefix[prefix_size++] = '0';
       }
+
+	  bin_writer<3> tmp;
+	  tmp.abs_value = abs_value;
+	  tmp.num_digits = num_digits;
+
       writer.write_int(num_digits, get_prefix(), spec,
-                       bin_writer<3>{abs_value, num_digits});
+		  tmp);
     }
 
     enum { SEP_SIZE = 1 };
@@ -2593,8 +2623,13 @@ class basic_writer {
       unsigned num_digits = internal::count_digits(abs_value);
       char_type sep = internal::thousands_sep<char_type>(writer.locale_.get());
       unsigned size = num_digits + SEP_SIZE * ((num_digits - 1) / 3);
-      writer.write_int(size, get_prefix(), spec,
-                       num_writer{abs_value, size, sep});
+
+      num_writer tmp;
+	  tmp.abs_value = abs_value;
+	  tmp.size = size;
+	  tmp.sep = sep;
+
+      writer.write_int(size, get_prefix(), spec, tmp);
     }
 
     void on_error() {
@@ -2628,6 +2663,12 @@ class basic_writer {
     char sign;
     basic_memory_buffer<char_type> &buffer;
 
+	double_writer(size_t _n, char _sign, basic_memory_buffer<char_type> &_buffer)
+		: n(_n), sign(_sign), buffer(_buffer)
+	{
+
+	}
+
     template <typename It>
     void operator()(It &&it) {
       if (sign) {
@@ -2659,7 +2700,10 @@ class basic_writer {
   // Writes a formatted string.
   template <typename Char>
   void write_str(const Char *s, std::size_t size, const align_spec &spec) {
-    write_padded(size, spec, str_writer<Char>{s, size});
+    str_writer<Char> tmp;
+	tmp.s = s;
+	tmp.size = size;
+	write_padded(size, spec, tmp);
   }
 
   template <typename Char>
@@ -2853,8 +2897,10 @@ void basic_writer<Range>::write_double(T value, const format_specs &spec) {
     format_specs spec;
     char sign;
     void operator()(const char *str) const {
-      writer.write_padded(INF_SIZE + (sign ? 1 : 0), spec,
-                          inf_or_nan_writer{sign, str});
+      inf_or_nan_writer tmp;
+	  tmp.sign = sign;
+	  tmp.str = str;
+      writer.write_padded(INF_SIZE + (sign ? 1 : 0), spec, tmp);
     }
   } write_inf_or_nan = {*this, spec, sign};
 
@@ -2915,7 +2961,9 @@ void basic_writer<Range>::write_double(T value, const format_specs &spec) {
     if (sign)
       ++n;
   }
-  write_padded(n, as, double_writer{n, sign, buffer});
+
+  double_writer tmp(n, sign, buffer);
+  write_padded(n, as, tmp);
 }
 
 template <typename Range>

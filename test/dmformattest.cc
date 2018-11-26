@@ -32,6 +32,7 @@ int main()
     strName = fmt::format(strName, name);
 
     fmt::fprintf(stdout, "hello world\n");
+	
 
     return 0;
 }
