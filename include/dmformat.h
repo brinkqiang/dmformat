@@ -3464,66 +3464,98 @@ auto join(const Range &range, wstring_view sep)
   return join(internal::begin(range), internal::end(range), sep);
 }
 #endif
-
-template <typename T = int>
-inline T to_number(const std::string& strIn)
+template <typename T>
+inline T lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline int to_number(const std::string& strIn)
+inline bool lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline unsigned int to_number(const std::string& strIn)
+inline int8_t lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+inline uint8_t lexical_cast(const std::string& strIn)
 {
     return std::stoul(strIn);
 }
 
 template <>
-inline long to_number(const std::string& strIn)
+inline int16_t lexical_cast(const std::string& strIn)
 {
-    return std::stol(strIn);
+    return std::stoi(strIn);
 }
 
 template <>
-inline unsigned long to_number(const std::string& strIn)
+inline uint16_t lexical_cast(const std::string& strIn)
 {
     return std::stoul(strIn);
 }
 
 template <>
-inline long long to_number(const std::string& strIn)
+inline int32_t lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+inline uint32_t lexical_cast(const std::string& strIn)
+{
+    return std::stoul(strIn);
+}
+
+template <>
+inline int64_t lexical_cast(const std::string& strIn)
 {
     return std::stoll(strIn);
 }
 
 template <>
-inline unsigned long long to_number(const std::string& strIn)
+inline uint64_t lexical_cast(const std::string& strIn)
 {
     return std::stoull(strIn);
 }
 
 template <>
-inline float to_number(const std::string& strIn)
+inline float lexical_cast(const std::string& strIn)
 {
     return std::stof(strIn);
 }
 
 template <>
-inline double to_number(const std::string& strIn)
+inline double lexical_cast(const std::string& strIn)
 {
     return std::stod(strIn);
 }
 
 template <>
-inline long double to_number(const std::string& strIn)
+inline long double lexical_cast(const std::string& strIn)
 {
     return std::stold(strIn);
 }
+
+template <>
+inline std::string lexical_cast(const std::string& strIn)
+{
+    return std::move(strIn);
+}
+
+template <typename T>
+inline std::string lexical_cast(const T &value) {
+    std::string str;
+    internal::container_buffer<std::string> buf(str);
+    writer(buf).write(value);
+    return str;
+}
+
 
 /**
   \rst
