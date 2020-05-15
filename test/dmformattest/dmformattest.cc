@@ -18,8 +18,8 @@ int main()
     std::cout << fmt::lexical_cast<int>(fmt::to_string(std::numeric_limits<int>::max())) << std::endl;
     std::cout << fmt::lexical_cast<int>(fmt::to_string(std::numeric_limits<int>::min())) << std::endl;
 
-    std::cout << fmt::lexical_cast<long long>(fmt::to_string(std::numeric_limits<long long>::max())) << std::endl;
-    std::cout << fmt::lexical_cast<unsigned long long>(fmt::to_string(std::numeric_limits<unsigned long long>::max())) << std::endl;
+    std::cout << fmt::lexical_cast<int64_t>(fmt::to_string(std::numeric_limits<int64_t>::max())) << std::endl;
+    std::cout << fmt::lexical_cast<uint64_t>(fmt::to_string(std::numeric_limits<uint64_t>::max())) << std::endl;
 
     std::cout << fmt::format("{}{}{}{}{}{}{}{}{}{}{}{}",
         1, 2, 3, 4, 5, 6, 'a', 'b', 'c', 'd', 'e', 'f') << std::endl;
