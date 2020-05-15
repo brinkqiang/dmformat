@@ -3465,88 +3465,119 @@ auto join(const Range &range, wstring_view sep)
 }
 #endif
 template <typename T>
-inline T lexical_cast(const std::string& strIn)
+static inline T lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <typename T>
+static inline T lexical_cast(const char* strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <typename T>
+static inline std::string lexical_cast(const T& value)
+{
+    return std::to_string(value);
+}
+
+template <size_t N>
+static inline std::string lexical_cast(const char(&strIn)[N])
+{
+    return strIn;
+}
+
+template <>
+static inline std::string lexical_cast(const char* strIn)
+{
+    return strIn;
+}
+
+template <>
+static inline std::string lexical_cast(const std::string& strIn)
+{
+    return std::move(strIn);
+}
+
+template <>
+static inline bool lexical_cast(const char* strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline bool lexical_cast(const std::string& strIn)
+static inline char lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline int8_t lexical_cast(const std::string& strIn)
+static inline int8_t lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline uint8_t lexical_cast(const std::string& strIn)
+static inline uint8_t lexical_cast(const std::string& strIn)
 {
     return std::stoul(strIn);
 }
 
 template <>
-inline int16_t lexical_cast(const std::string& strIn)
+static inline int16_t lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline uint16_t lexical_cast(const std::string& strIn)
+static inline uint16_t lexical_cast(const std::string& strIn)
 {
     return std::stoul(strIn);
 }
 
 template <>
-inline int32_t lexical_cast(const std::string& strIn)
+static inline int32_t lexical_cast(const std::string& strIn)
 {
     return std::stoi(strIn);
 }
 
 template <>
-inline uint32_t lexical_cast(const std::string& strIn)
+static inline uint32_t lexical_cast(const std::string& strIn)
 {
     return std::stoul(strIn);
 }
 
 template <>
-inline int64_t lexical_cast(const std::string& strIn)
+static inline int64_t lexical_cast(const std::string& strIn)
 {
     return std::stoll(strIn);
 }
 
 template <>
-inline uint64_t lexical_cast(const std::string& strIn)
+static inline uint64_t lexical_cast(const std::string& strIn)
 {
     return std::stoull(strIn);
 }
 
 template <>
-inline float lexical_cast(const std::string& strIn)
+static inline float lexical_cast(const std::string& strIn)
 {
     return std::stof(strIn);
 }
 
 template <>
-inline double lexical_cast(const std::string& strIn)
+static inline double lexical_cast(const std::string& strIn)
 {
     return std::stod(strIn);
 }
 
 template <>
-inline long double lexical_cast(const std::string& strIn)
+static inline long double lexical_cast(const std::string& strIn)
 {
     return std::stold(strIn);
 }
 
-template <>
-inline std::string lexical_cast(const std::string& strIn)
-{
-    return std::move(strIn);
-}
 /**
 template <typename T>
 inline std::string lexical_cast(const T &value) {
