@@ -4038,6 +4038,120 @@ inline internal::udl_arg<wchar_t>
 operator"" _a(const wchar_t *s, std::size_t) { return {s}; }
 } // inline namespace literals
 #endif // FMT_USE_USER_DEFINED_LITERALS
+
+template <typename T>
+static inline T lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <typename T>
+static inline T lexical_cast(const char* strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <typename T>
+static inline std::string lexical_cast(const T& value)
+{
+    return std::to_string(value);
+}
+
+template <size_t N>
+static inline std::string lexical_cast(const char(&strIn)[N])
+{
+    return strIn;
+}
+
+template <>
+static inline std::string lexical_cast(const char* strIn)
+{
+    return strIn;
+}
+
+template <>
+static inline std::string lexical_cast(const std::string& strIn)
+{
+    return std::move(strIn);
+}
+
+template <>
+static inline bool lexical_cast(const char* strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+static inline char lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+static inline int8_t lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+static inline uint8_t lexical_cast(const std::string& strIn)
+{
+    return std::stoul(strIn);
+}
+
+template <>
+static inline int16_t lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+static inline uint16_t lexical_cast(const std::string& strIn)
+{
+    return std::stoul(strIn);
+}
+
+template <>
+static inline int32_t lexical_cast(const std::string& strIn)
+{
+    return std::stoi(strIn);
+}
+
+template <>
+static inline uint32_t lexical_cast(const std::string& strIn)
+{
+    return std::stoul(strIn);
+}
+
+template <>
+static inline int64_t lexical_cast(const std::string& strIn)
+{
+    return std::stoll(strIn);
+}
+
+template <>
+static inline uint64_t lexical_cast(const std::string& strIn)
+{
+    return std::stoull(strIn);
+}
+
+template <>
+static inline float lexical_cast(const std::string& strIn)
+{
+    return std::stof(strIn);
+}
+
+template <>
+static inline double lexical_cast(const std::string& strIn)
+{
+    return std::stod(strIn);
+}
+
+template <>
+static inline long double lexical_cast(const std::string& strIn)
+{
+    return std::stold(strIn);
+}
 FMT_END_NAMESPACE
 
 #define FMT_STRING(s) [] { \
@@ -4076,5 +4190,7 @@ FMT_END_NAMESPACE
 #endif
 
 #include "dmprintf.h"
+
+
 
 #endif // __DMFORMAT_H_INCLUDE__
