@@ -27,13 +27,5 @@ int main()
     std::cout << fmt::format("{_1}/{a_}/{A_}", fmt::arg("a_", 'a'),
         fmt::arg("A_", "A"), fmt::arg("_1", 1)) << std::endl;
 
-    char name[] = "fmt";
-    std::string strName = "{}";
-    strName = fmt::format(strName, name);
-    fmt::memory_buffer buf;
-    fmt::format_to(buf, "{}", 42);    // replaces itoa(42, buffer, 10)
-    std::string str = buf.data();
-    fmt::fprintf(stdout, "hello world\n");
-
     return 0;
 }
