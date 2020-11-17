@@ -9,5 +9,4 @@ ModuleSetCompileOptions()
 
 ADD_DEFINITIONS(-DUSE_DMFORMAT)
 
-LibImport("dmformat" "src")
-ExeImport("test" "dmformat")
+ExeImport("test" "")

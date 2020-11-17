@@ -376,7 +376,7 @@ class basic_buffer {
     reserve(new_size);
     size_ = new_size;
   }
-
+  void clear() { size_ = 0; }
   /** Reserves space to store at least *capacity* elements. */
   void reserve(std::size_t new_capacity) {
     if (new_capacity > capacity_)
@@ -682,8 +682,7 @@ struct result_of;
 template <typename F, typename... Args>
 struct result_of<F(Args...)> {
   // A workaround for gcc 4.4 that doesn't allow F to be a reference.
-  typedef typename std::result_of<
-    typename std::remove_reference<F>::type(Args...)>::type type;
+    typedef typename std::invoke_result<F, Args...>::type type;
 };
 }
 
@@ -1326,7 +1325,6 @@ inline void print(wstring_view format_str, const Args & ... args) {
   format_arg_store<wformat_context, Args...> as(args...);
   vprint(format_str, as);
 }
-
 FMT_END_NAMESPACE
 
 #endif // __DMFORMATCORE_H_INCLUDE__
