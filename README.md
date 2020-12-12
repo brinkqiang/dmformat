@@ -3,7 +3,7 @@
 Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 
 ## Intro
-C++11 string format lib, based on fmt.
+C++11 string format lib, based on fmt v7.1.3
 ```cpp
 
 #include "dmformat.h"
