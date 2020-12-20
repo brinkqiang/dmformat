@@ -7,12 +7,7 @@ C++11 string format lib, based on fmt v7.1.3
 ```cpp
 
 
-#include "dmformat.h"
-#include "dmranges.h"
-#include "dmchrono.h"
-#include <iostream>
-#include <vector>
-#include <list>
+#include "dmformat.hpp"
 
 int main()
 {
