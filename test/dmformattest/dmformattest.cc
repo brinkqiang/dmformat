@@ -1,11 +1,5 @@
 
-#include "dmformat.h"
-#include "dmranges.h"
-#include <iostream>
-#include <vector>
-#include <list>
-#include <sstream>
-#include "dmchrono.h"
+#include "dmformat.hpp"
 
 int main()
 {
