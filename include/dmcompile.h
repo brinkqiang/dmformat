@@ -404,7 +404,7 @@ struct is_compiled_format<text<Char>> : std::true_type {};
 template <typename Char>
 constexpr text<Char> make_text(basic_string_view<Char> s, size_t pos,
                                size_t size) {
-  return {{&s[pos], size}};
+  return { {&s[pos], size} };
 }
 
 template <typename Char> struct code_unit {

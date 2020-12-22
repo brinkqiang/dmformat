@@ -3923,11 +3923,11 @@ FMT_CONSTEXPR detail::udl_formatter<Char, CHARS...> operator""_format() {
  */
 FMT_CONSTEXPR detail::udl_formatter<char> operator"" _format(const char* s,
                                                              size_t n) {
-  return {{s, n}};
+  return { {s, n} };
 }
 FMT_CONSTEXPR detail::udl_formatter<wchar_t> operator"" _format(
     const wchar_t* s, size_t n) {
-  return {{s, n}};
+  return { {s, n} };
 }
 #  endif  // FMT_USE_UDL_TEMPLATE
 

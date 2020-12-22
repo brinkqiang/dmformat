@@ -245,7 +245,7 @@ const typename basic_data<T>::digit_pair basic_data<T>::digits[] = {
     {'7', '8'}, {'7', '9'}, {'8', '0'}, {'8', '1'}, {'8', '2'}, {'8', '3'},
     {'8', '4'}, {'8', '5'}, {'8', '6'}, {'8', '7'}, {'8', '8'}, {'8', '9'},
     {'9', '0'}, {'9', '1'}, {'9', '2'}, {'9', '3'}, {'9', '4'}, {'9', '5'},
-    {'9', '6'}, {'9', '7'}, {'9', '8'}, {'9', '9'}};
+    {'9', '6'}, {'9', '7'}, {'9', '8'}, {'9', '9'} };
 
 template <typename T>
 const char basic_data<T>::hex_digits[] = "0123456789abcdef";
@@ -327,16 +327,16 @@ const int16_t basic_data<T>::grisu_pow10_exponents[] = {
 
 template <typename T>
 const divtest_table_entry<uint32_t> basic_data<T>::divtest_table_for_pow5_32[] =
-    {{0x00000001, 0xffffffff}, {0xcccccccd, 0x33333333},
+    { {0x00000001, 0xffffffff}, {0xcccccccd, 0x33333333},
      {0xc28f5c29, 0x0a3d70a3}, {0x26e978d5, 0x020c49ba},
      {0x3afb7e91, 0x0068db8b}, {0x0bcbe61d, 0x0014f8b5},
      {0x68c26139, 0x000431bd}, {0xae8d46a5, 0x0000d6bf},
      {0x22e90e21, 0x00002af3}, {0x3a2e9c6d, 0x00000897},
-     {0x3ed61f49, 0x000001b7}};
+     {0x3ed61f49, 0x000001b7} };
 
 template <typename T>
 const divtest_table_entry<uint64_t> basic_data<T>::divtest_table_for_pow5_64[] =
-    {{0x0000000000000001, 0xffffffffffffffff},
+    { {0x0000000000000001, 0xffffffffffffffff},
      {0xcccccccccccccccd, 0x3333333333333333},
      {0x8f5c28f5c28f5c29, 0x0a3d70a3d70a3d70},
      {0x1cac083126e978d5, 0x020c49ba5e353f7c},
@@ -359,7 +359,7 @@ const divtest_table_entry<uint64_t> basic_data<T>::divtest_table_for_pow5_64[] =
      {0xd489e3a9addec2d1, 0x000000000002f394},
      {0x90e860bb892c8d5d, 0x000000000000971d},
      {0x502e79bf1b6f4f79, 0x0000000000001e39},
-     {0xdcd618596be30fe5, 0x000000000000060b}};
+     {0xdcd618596be30fe5, 0x000000000000060b} };
 
 template <typename T>
 const uint64_t basic_data<T>::dragonbox_pow10_significands_64[] = {
@@ -1790,7 +1790,7 @@ bool check_divisibility_and_divide_by_pow5(uint32_t& n) FMT_NOEXCEPT {
     int bits_for_comparison;
     uint32_t threshold;
     int shift_amount;
-  } infos[] = {{0xcccd, 16, 0x3333, 18}, {0xa429, 8, 0x0a, 20}};
+  } infos[] = { {0xcccd, 16, 0x3333, 18}, {0xa429, 8, 0x0a, 20} };
   constexpr auto info = infos[N - 1];
   n *= info.magic_number;
   const uint32_t comparison_mask = (1u << info.bits_for_comparison) - 1;
@@ -1806,7 +1806,7 @@ template <int N> uint32_t small_division_by_pow10(uint32_t n) FMT_NOEXCEPT {
     uint32_t magic_number;
     int shift_amount;
     uint32_t divisor_times_10;
-  } infos[] = {{0xcccd, 19, 100}, {0xa3d8, 22, 1000}};
+  } infos[] = { {0xcccd, 19, 100}, {0xa3d8, 22, 1000} };
   constexpr auto info = infos[N - 1];
   FMT_ASSERT(n <= info.divisor_times_10, "n is too large");
   return n * info.magic_number >> info.shift_amount;
