@@ -1,13 +1,21 @@
 
 #include "dmformat.hpp"
+#include <map>
 
 int main()
 {
 	fmt::print(fmt::format("{0},{1},{2}\n", "a", "b", "c"));
 	fmt::print(fmt::format("{2},{1},{0}\n", "a", "b", "c"));
 
-	std::vector<std::vector<int32_t>> ivv{ {1, 2}, {3, 5}, {7, 11} };
-	auto ivf = fmt::format("{}\n", ivv);
+	std::vector<std::vector<int32_t>> vv_data{ {1, 2}, {3, 5}, {7, 11} };
+	auto svv = fmt::format("{}", vv_data);
+	fmt::print("{}\n", svv);
+
+	std::map<int, std::vector<int32_t>> mv_data;
+	mv_data[1] = { 1 , 2 ,3};
+	mv_data[2] = { 3 , 4 ,5 };
+	auto smv = fmt::format("{}", mv_data);
+	fmt::print("{}\n", smv);
 
 	std::chrono::system_clock::time_point point = std::chrono::system_clock::now();
 
@@ -22,8 +30,6 @@ int main()
 	auto t1 = std::make_tuple('a', 1, 2.0f);
 	fmt::print(fmt::format("{}\n", t1));
 	fmt::print(fmt::format("({})\n", fmt::join(t1, ",")));
-
-	fmt::print(fmt::format("{}{}{}{}{}{}{}{}{}{}{}{}\n", 1, 2, 3, 4, 5, 6, 'a', 'b', 'c', 'd', 'e', 'f'));
 
 	fmt::print(fmt::format("{NAME}-{AGE}-{JOB}\n", fmt::arg("NAME", "TOM"), fmt::arg("AGE", 32), fmt::arg("JOB", "player")));
 
