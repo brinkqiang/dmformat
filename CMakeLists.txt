@@ -10,7 +10,7 @@ ModuleSetCompileOptions()
 ADD_DEFINITIONS(-DUSE_DMFORMAT)
 
 if ( MSVC )
-    ADD_COMPILE_OPTIONS("/std:c++17")
+    ADD_COMPILE_OPTIONS("/std:c++20")
 endif()
 
 InterfaceImport("dmformat" "include" "")
