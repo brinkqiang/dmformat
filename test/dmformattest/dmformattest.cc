@@ -1,4 +1,4 @@
-
+ï»¿
 #include <iostream>
 #include <vector>
 #include <list>
@@ -31,8 +31,8 @@ int main()
 	fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold,
 		"Hello, {}!\n", "world");
 	fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) |
-		fmt::emphasis::underline, "Hello, {}!\n", "§Þ§Ú§â");
+		fmt::emphasis::underline, "Hello, {}!\n", "Ð¼Ð¸Ñ€");
 	fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
-		"Hello, {}!\n", "ÊÀ½ç");
+		"Hello, {}!\n", "ä¸–ç•Œ");
     return 0;
 }
