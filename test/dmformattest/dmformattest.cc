@@ -14,6 +14,7 @@ int main()
     std::cout << fmt::format("{0},{1},{2}", "a", "b", "c") << std::endl;
     std::cout << fmt::format("{2},{1},{0}", "a", "b", "c") << std::endl;
 
+	std::cout << fmt::format("{:%Y-%m-%d %H:%M:%S}", fmt::localtime(time(NULL))) << std::endl;
 
 	std::vector<int> v = { 1, 2, 3 };
 	fmt::print("{}\n", v);
