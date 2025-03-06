@@ -28,9 +28,7 @@ int main()
     std::cout << fmt::format("{_1}/{a_}/{A_}", fmt::arg("a_", 'a'),
         fmt::arg("A_", "A"), fmt::arg("_1", 1)) << std::endl;
 
-
-	fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold,
-		"Hello, {}!\n", "world");
+	fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold, "Hello, {}!\n", "world");
 	fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) |
 		fmt::emphasis::underline, "Hello, {}!\n", "мир");
 	fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
